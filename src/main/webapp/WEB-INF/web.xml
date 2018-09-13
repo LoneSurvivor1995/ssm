@@ -4,6 +4,13 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
+    <!-- Spring容器加载所有的配置文件的路径 -->
+    <!--<context-param>-->
+        <!--<param-name>contextConfigLocation</param-name>-->
+        <!--<param-value>classpath*:spring-mybatis.xml</param-value>-->
+    <!--</context-param>-->
+
   <!-- springMVC核心配置 -->
   <servlet>
     <servlet-name>dispatcherServlet</servlet-name>
