@@ -9,14 +9,10 @@
                         http://www.springframework.org/schema/context/spring-context-3.1.xsd
                         http://www.springframework.org/schema/mvc
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
     <!-- 自动扫描 -->
     <context:component-scan base-package="service" />
 
-    <!-- 引入配置文件 -->
-    <bean id="propertyConfigurer"
-          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location" value="classpath:jdbc.properties" />
-    </bean>
     <!--org.apache.commons.dbcp.BasicDataSource-->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
@@ -28,20 +24,6 @@
         <property name="maxIdle" value="20"/>
         <property name="minIdle" value="0"/>
         <property name="maxWait" value="60000"/>
-        <!--<property name="driverClassName" value="${driver}"/>-->
-        <!--<property name="url" value="${url}" />-->
-        <!--<property name="username" value="${username}" />-->
-        <!--<property name="password" value="${password}" />-->
-        <!--&lt;!&ndash; 初始化连接大小 &ndash;&gt;-->
-        <!--<property name="initialSize" value="${initialSize}"></property>-->
-        <!--&lt;!&ndash; 连接池最大数量 &ndash;&gt;-->
-        <!--<property name="maxActive" value="${maxActive}"></property>-->
-        <!--&lt;!&ndash; 连接池最大空闲 &ndash;&gt;-->
-        <!--<property name="maxIdle" value="${maxIdle}"></property>-->
-        <!--&lt;!&ndash; 连接池最小空闲 &ndash;&gt;-->
-        <!--<property name="minIdle" value="${minIdle}"></property>-->
-        <!--&lt;!&ndash; 获取连接最大等待时间 &ndash;&gt;-->
-        <!--<property name="maxWait" value="${maxWait}"></property>-->
     </bean>
 
     <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
@@ -58,9 +40,27 @@
     </bean>
 
     <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
-    <bean id="transactionManager"
-          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource" />
-    </bean>
+    <!--<bean id="transactionManager"-->
+          <!--class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
+        <!--<property name="dataSource" ref="dataSource" />-->
+    <!--</bean>-->
+
+    <!-- 引入配置文件 -->
+    <!--<bean id="propertyConfigurer"-->
+    <!--class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
+    <!--<property name="location" value="classpath:properties/jdbc.properties" />-->
+    <!--</bean>-->
+
+    <!--<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${driver}" />
+        <property name="url" value="${url}" />
+        <property name="username" value="${username}" />
+        <property name="password" value="${password}" />
+        <property name="initialSize" value="${initialSize}"></property>
+        <property name="maxActive" value="${maxActive}"></property>
+        <property name="maxIdle" value="${maxIdle}"></property>
+        <property name="minIdle" value="${minIdle}"></property>
+        <property name="maxWait" value="${maxWait}"></property>
+    </bean>-->
 
 </beans>

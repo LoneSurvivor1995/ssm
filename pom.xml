@@ -120,6 +120,13 @@
       </dependency>
       <!--servlet/jsp api end-->
 
+      <!--@ResponseBody可以将对象转成json格式，但是@ResponseBody这个注解需要依赖jackson的相关jar包。 -->
+      <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+          <version>2.4.2</version>
+      </dependency>
+
       <!--junit4-->
       <dependency>
           <groupId>junit</groupId>

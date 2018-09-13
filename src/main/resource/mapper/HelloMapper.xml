@@ -2,8 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="mapper.HelloMapper">
 
-    <select id="get" resultType="entity.User">
-         SELECT * FROM suser
+    <insert id="insert" parameterType="entity.User">
+        INSERT INTO suser VALUES (#{sid},#{sname},#{sage},#{ssex})
+    </insert>
+
+    <delete id="delete" parameterType="java.util.List">
+        DELETE FROM suser WHERE sid IN
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+    <update id="update" parameterType="entity.User">
+        UPDATE suser SET sname=#{sname},sage=#{sage},ssex=#{ssex} where sid=#{sid}
+    </update>
+
+    <select id="query" parameterType="java.util.Map" resultType="entity.User">
+        select * from suser where sid=#{sid}
     </select>
 
 </mapper>
