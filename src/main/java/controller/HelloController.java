@@ -2,19 +2,29 @@ package controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+import service.HelloService;
 
-import java.io.File;
+import javax.annotation.Resource;
 
 @RestController
 public class HelloController {
 
+    @Resource
+    HelloService helloService;
+
     @RequestMapping("/get")
-    public String hello(){
-        return "hello";
+    public String get(){
+        return helloService.get();
     }
 
-    public static void main(String[] args) {
-        File file = new File("resource.spring-mvc.xml");
-        System.out.println(file.exists());
+    @RequestMapping("/find")
+    public String find(){
+        return "find";
+    }
+
+    @RequestMapping("/page")
+    public ModelAndView page(){
+        return new ModelAndView("one");
     }
 }
