@@ -20,6 +20,19 @@
     <!-- 注解驱动 -->
     <mvc:annotation-driven />
 
+    <!--&lt;!&ndash; 将 springSwaggerConfig加载到spring容器 &ndash;&gt;-->
+    <!--<bean class="com.mangofactory.swagger.configuration.SpringSwaggerConfig" />-->
+
+    <!--&lt;!&ndash; 将自定义的swagger配置类加载到spring容器 &ndash;&gt;-->
+    <!--<bean class="config.SwaggerConfig" />-->
+
+    <!--<bean class="config.SwaggerConfig"/>-->
+    <!--<mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/" />-->
+    <!--<mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/" />-->
+    <!--<bean class="springfox.documentation.swagger2.configuration.Swagger2DocumentationConfiguration" id="swagger2Config"/>-->
+
+
+
     <!-- 当在web.xml 中   DispatcherServlet使用 <url-pattern>/</url-pattern> 映射时，能映射静态资源 -->
     <mvc:default-servlet-handler />
 
