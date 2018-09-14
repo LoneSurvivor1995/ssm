@@ -4,6 +4,7 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import entity.User;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import service.HelloService;
@@ -18,7 +19,7 @@ public class HelloController {
     @Resource
     HelloService helloService;
 
-    @RequestMapping("/insert")
+    @RequestMapping(value = "/insert",method = RequestMethod.POST)
     @ApiOperation(value = "insert")
     public String insert(@RequestBody User user){
 //    public String insert(){
@@ -31,7 +32,7 @@ public class HelloController {
         return "insert success";
     }
 
-    @RequestMapping("/delete")
+    @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
     @ApiOperation(value = "delete")
     public String delete(@RequestBody List<String> ids){
 //    public String delete(){
@@ -42,7 +43,7 @@ public class HelloController {
         return "delete success";
     }
 
-    @RequestMapping("/update")
+    @RequestMapping(value = "/update",method = RequestMethod.PUT)
     @ApiOperation(value = "update")
     public String update(@RequestBody User user){
 //    public String update(){
@@ -55,7 +56,7 @@ public class HelloController {
         return "update success";
     }
 
-    @RequestMapping("/query")
+    @RequestMapping(value = "/query",method = RequestMethod.POST)
     @ApiOperation(value = "query")
     public List<User> query(@RequestBody Map<String,Object> map){
 //    public List<User> query(){
@@ -65,7 +66,7 @@ public class HelloController {
         return users;
     }
 
-    @RequestMapping("/page")
+    @RequestMapping(value = "/page",method = RequestMethod.GET)
     @ApiOperation(value = "page")
     public ModelAndView page(){
         return new ModelAndView("one");

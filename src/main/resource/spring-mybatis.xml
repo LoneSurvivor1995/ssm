@@ -13,19 +13,6 @@
     <!-- 自动扫描 -->
     <context:component-scan base-package="service,config" />
 
-    <!--org.apache.commons.dbcp.BasicDataSource-->
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/mh?useUnicode=true&amp;characterEncoding=utf8"/>
-        <property name="username" value="root"/>
-        <property name="password" value="123456"/>
-        <property name="initialSize" value="0"/>
-        <property name="maxActive" value="20"/>
-        <property name="maxIdle" value="20"/>
-        <property name="minIdle" value="0"/>
-        <property name="maxWait" value="60000"/>
-    </bean>
-
     <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
@@ -43,21 +30,12 @@
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
     </bean>
 
-
-
-    <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
-    <!--<bean id="transactionManager"-->
-          <!--class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
-        <!--<property name="dataSource" ref="dataSource" />-->
-    <!--</bean>-->
-
     <!-- 引入配置文件 -->
-    <!--<bean id="propertyConfigurer"-->
-    <!--class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
-    <!--<property name="location" value="classpath:properties/jdbc.properties" />-->
-    <!--</bean>-->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="location" value="classpath:properties/jdbc.properties" />
+    </bean>
 
-    <!--<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${driver}" />
         <property name="url" value="${url}" />
         <property name="username" value="${username}" />
@@ -67,6 +45,25 @@
         <property name="maxIdle" value="${maxIdle}"></property>
         <property name="minIdle" value="${minIdle}"></property>
         <property name="maxWait" value="${maxWait}"></property>
-    </bean>-->
+    </bean>
+
+    <!--org.apache.commons.dbcp.BasicDataSource-->
+    <!--<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">-->
+    <!--<property name="driverClassName" value="com.mysql.jdbc.Driver"/>-->
+    <!--<property name="url" value="jdbc:mysql://localhost:3306/mh?useUnicode=true&amp;characterEncoding=utf8"/>-->
+    <!--<property name="username" value="root"/>-->
+    <!--<property name="password" value="123456"/>-->
+    <!--<property name="initialSize" value="0"/>-->
+    <!--<property name="maxActive" value="20"/>-->
+    <!--<property name="maxIdle" value="20"/>-->
+    <!--<property name="minIdle" value="0"/>-->
+    <!--<property name="maxWait" value="60000"/>-->
+    <!--</bean>-->
+
+    <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
+    <!--<bean id="transactionManager"-->
+    <!--class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
+    <!--<property name="dataSource" ref="dataSource" />-->
+    <!--</bean>-->
 
 </beans>

@@ -12,7 +12,15 @@
       </configuration>
     </facet>
     <facet type="Spring" name="Spring">
-      <configuration />
+      <configuration process_explicitly_annotated="true">
+        <fileset id="web dispatcherServlet servlet context" name="MVC dispatcherServlet servlet context" removed="true">
+          <file>file://$MODULE_DIR$/../three/src/main/resource/spring-mvc.xml</file>
+        </fileset>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/../three/src/main/resource/spring-mvc.xml</file>
+          <file>file://$MODULE_DIR$/../three/src/main/resource/spring-mybatis.xml</file>
+        </fileset>
+      </configuration>
     </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7">
